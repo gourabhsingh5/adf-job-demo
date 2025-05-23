@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "filter"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          ORDERNUMBER as short,",
@@ -29,7 +33,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> sourceSales"
+				"     ignoreNoFilesFound: false) ~> sourceSales",
+				"sourceSales filter(SALES>=2000) ~> filter"
 			]
 		}
 	}
